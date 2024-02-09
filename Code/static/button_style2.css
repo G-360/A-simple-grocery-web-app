@@ -1,0 +1,19 @@
+.button-style2 {
+    background-color: #d3eb3d;
+    outline: #d3eb3d;
+    border-color: #d3eb3d;
+    font-family: Cursive;
+}
+
+.button-style2:focus {
+    box-shadow: 0 0 0 5px rgba(211, 235, 61, 0.150);
+}
+
+.button-style2:blur {
+    box-shadow: 0 0 0 0 rgba(211, 235, 61, 0.075);
+}
+
+.button-style2:hover {
+    background-color: #b1eb3d;
+}
+

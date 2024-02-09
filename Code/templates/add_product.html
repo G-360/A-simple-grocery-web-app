@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>G-Grocery | Add_Products:</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fix.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='button_style1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='button_style2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='button_style3.css') }}">
+    {% for font in fonts %}
+      <link rel="stylesheet" href="{{ url_for('static', filename='fonts/poppins/' ~ font ~ '.ttf') }}">
+    {% endfor %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </head>
+  <body>
+   <section class="vh-100">
+      <div class="container-fluid" style="background-color: #f0f0f0;">
+        <div class="row-sm-1">
+          <div class="col-sm-12 text-black">
+            <div class="d-flex align-items-center justify-content-between px-2 ms-xl-4" style="height: 70px;">
+                <div class="d-flex align-items-center justify-content-between">
+                    <span class="h3 fw-bold mb-0 px-2" style="order: 0;"><a href="/user={{usr}}" style="color: black; text-decoration: none;">G-Grocery</a></span>
+                </div>
+                <button class="btn btn-lg  button-style1" id="management" type="button">Store management <i class="fa-solid fa-book-open"></i></button>
+                <div class="d-flex align-items-center">
+                  <span class="h3 fw-bold mb-0 px-2" ><a href="/profile={{usr}}" style="color: black; text-decoration: none;">{{usr}}</a></span>
+                  <button class="btn btn-lg button-style2" id="LogoutButton" type="button">Logout</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" style="background-color: #d6d4d4;">
+        <div class="row">
+          <div class="col-sm-12 text-black">
+
+            <div class="d-flex align-items-center justify-content-start px-2 ms-xl-4" style="height: 20px;">
+                <span class="h7 mb-0 px-2 text-black " style="order: 0;"><a href="/user={{usr}}" style="color: black; text-decoration: none;">Home</a> </span>
+                <span class="h7 mb-0 px-2 text-black pb-1">|</span>
+                <span class="h7 mb-0 px-2 text-black"><a href="/user={{usr}}/Categories" style="color: black; text-decoration: none;">Categories</a> </span>
+                <span class="h7 mb-0 px-2 text-black pb-1">|</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container-fluid pt-2" style="width:100%;"> 
+        <div class="row">
+          <div class="col-sm-12 pb-2 fs-2" style="font-family: Cursive; font-weight: bolder;">
+            <span>Add a Product:</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid pt-4" style="width:100%;"> 
+        <!-- Category panels-->
+        <div class="row">
+          <div class="col-sm-12 pb-2">
+    
+            <div class="d-flex flex-wrap align-items-center justify-content-center " style="width:100%;">
+              <div class="d-flex col-lg-8 col-xs-10 flex-wrap align-items-center justify-content-start px-md-sm-xs-1 px-xs-0 mr-xs-0 ms-xl-4" style="background-color: #ebebeb;">
+                  
+                <!-- Content  -->  <!-- background-color: #f0f0f0; background-color: #e3e3e3;-->
+                <div class="d-flex align-items-center justify-content-between ms-xl-xs-0 " style="height: 92%; width: 100%; ">
+
+                  <div class="d-flex flex-wrap align-items-start px-1 px-sm-0 px-xs-0 pb-1 pt-4 ms-xl-xs-0 " style="height: 100%; width: 20%; min-width:18%; border-right: 2px solid #bfbdbd; flex-direction: column; overflow: hidden; word-wrap: break-word;">
+                      <span class=" fw px-2 text-start fs-6 fs-sm-5  pt-2 pb-2 mt-2" style="font-family: cursive; font-weight:normal;"> Product name</span>
+                    <span class=" fw px-2 text-start fs-6 fs-sm-5  pt-2 pb-2 mt-4 mb-3" style="font-family: cursive; font-weight:normal;"> Units</span>
+                    <span class=" fw px-2 text-start fs-6 fs-sm-5  pt-2 pb-2 mt-2 mb-1" style="font-family: cursive; font-weight:normal;"> Rate/Unit</span>
+                    <span class=" fw px-2 text-start fs-6 fs-sm-5  pt-2 pb-2 mt-3 mb-1" style="font-family: cursive; font-weight:normal;"> Quantity</span>
+                    <span class=" fw px-2 text-start fs-6 fs-sm-5  pt-2 pb-2 mt-3 mb-1" style="font-family: cursive; font-weight:normal;"> Add to new Category</span>
+                  </div>
+                  <div class="d-flex align-items-start px-1 pb-1 pt-1 ms-xl-xs-0 " style="height: 100%; width: 80%; flex-direction: column;">
+
+                    <form method="post">
+                      <div class="form-group fw px-2 pt-3 text-start fs-6 fs-sm-5  pt-2 pb-2" style="width: 150%;">
+                        <input type="text" id="prod_name" name="prod_name" class="form-control form-control-lg" required />   
+                      </div>
+                      <div class="form-group fw px-2 pt-3 text-start fs-6 fs-sm-5  mt-2 pt-3 pb-2" style="width: 150%;">
+                        <select class="form-select" id="units" name="units" aria-label="Select the units: eg. Rs/Kg">
+                          <option selected>Rs/Kg</option>
+                          <option value="Rs/litre">Rs/litre</option>
+                          <option value="Rs/dozen">Rs/dozen</option>
+                          <option value="Rs/gram">Rs/gram</option>
+                          <option value="Rs/Unit">Rs/Unit</option>
+                        </select>
+                      </div>
+                      <div class="form-group fw px-2 pt-3 text-start fs-6 fs-sm-5  pt-2 pb-2" style="width: 100%;">
+                        <input type="text" id="Rateper" name="Rateper" class="form-control form-control-lg" required />
+                      </div>
+                      <div class="form-group fw px-2 pt-3 text-start fs-6 fs-sm-5  pt-2 pb-2" style="width: 100%;">
+                        <input type="text" id="Quantity" name="Quantity" class="form-control form-control-lg" required />
+                      </div>
+                      <div class="form-group fw px-2 pt-3 text-start fs-6 fs-sm-5  pt-2 pb-2" style="width: 100%;">
+                        <input type="text" id="Category" name="Category" class="form-control form-control-lg"  />
+                      </div>
+                      <div class="position-fixed bottom-1 end-0 p-4 px-1" style="margin-right: 18%;">
+                        <button class="btn button-style3 fs-5" id="save" type="Submit" style="height: 100%; width: 100%; text-align: center; vertical-align: middle;">Save</button>
+                      </div>
+                    </form>
+
+                  </div>
+
+                </div>
+
+              </div>              
+            </div> 
+
+          </div>
+        </div>
+      </div>
+    
+      <script>
+        const button = document.getElementById('LogoutButton');
+        button.addEventListener('click', function() {
+            window.location.href = '/logout';
+        });
+
+        const storeM_button = document.getElementById('management');
+        storeM_button.addEventListener('click', function() {
+            window.location.href = '/user={{usr}}/management';
+        });
+    </script>
+  </body>
+</html>

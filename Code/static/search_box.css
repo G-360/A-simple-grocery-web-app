@@ -1,0 +1,20 @@
+.search-box{
+    border: 1px solid #b1eb3d;
+    border-radius: 5px;
+    padding: 10px; 
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #000000; 
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-box:focus {
+    border-color: #b1eb3d;
+    box-shadow: 0 0 1px rgba(177, 235, 61, 0.5); 
+}
+
+.search-error {
+    border-color: #ffe203;
+    box-shadow: 0 0 1px rgba(177, 235, 61, 0.5);
+}
+

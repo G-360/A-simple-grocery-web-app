@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>G-Grocery | Delete:</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fix.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='button_style1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='button_style2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='button_style3.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='feature_tooltip.css') }}">
+    {% for font in fonts %}
+      <link rel="stylesheet" href="{{ url_for('static', filename='fonts/poppins/' ~ font ~ '.ttf') }}">
+    {% endfor %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </head>
+  <body>
+   <section class="vh-100">
+      <div class="container-fluid" style="background-color: #f0f0f0;">
+        <div class="row-sm-1">
+          <div class="col-sm-12 text-black">
+            <div class="d-flex align-items-center justify-content-between px-2 ms-xl-4" style="height: 70px;">
+                <div class="d-flex align-items-center justify-content-between">
+                    <span class="h3 fw-bold mb-0 px-2" style="order: 0;"><a href="/user={{usr}}" style="color: black; text-decoration: none;">G-Grocery</a></span>
+                </div>
+                <button class="btn btn-info btn-lg fw-bold" id="management" type="button" style="background-color: #dfeb3d; outline: #dfeb3d; border-color: #dfeb3d; font-family: Cursive;" onfocus="this.style.boxShadow = '0 0 0 5px rgba(211, 235, 61, 0.150)'" onblur="this.style.boxShadow = '0 0 0 0 rgba(211, 235, 61, 0.075)'" onmouseover="this.style.backgroundColor = '#dfeb3d'" onmouseout="this.style.backgroundColor = '#dfeb3d'">Store management <i class="fa-solid fa-book-open"></i></button>
+                <div class="d-flex align-items-center">
+                  <span class="h3 fw-bold mb-0 px-2" ><a href="/profile={{usr}}" style="color: black; text-decoration: none;">{{usr}}</a></span>
+                  <button class="btn btn-info btn-lg" id="LogoutButton" type="button" style="background-color: #d3eb3d; outline: #d3eb3d; border-color: #d3eb3d; font-family: Cursive;" onfocus="this.style.boxShadow = '0 0 0 5px rgba(211, 235, 61, 0.150)'" onblur="this.style.boxShadow = '0 0 0 0 rgba(211, 235, 61, 0.075)'" onmouseover="this.style.backgroundColor = '#d3eb3d'" onmouseout="this.style.backgroundColor = '#d3eb3d'">Logout</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" style="background-color: #d6d4d4;">
+        <div class="row">
+          <div class="col-sm-12 text-black">
+
+            <div class="d-flex align-items-center justify-content-start px-2 ms-xl-4" style="height: 20px;">
+                <span class="h7 mb-0 px-2 text-black " style="order: 0;"><a href="/user={{usr}}" style="color: black; text-decoration: none;">Home</a> </span>
+                <span class="h7 mb-0 px-2 text-black pb-1">|</span>
+                <span class="h7 mb-0 px-2 text-black"><a href="/user={{usr}}/Categories" style="color: black; text-decoration: none;">Categories</a> </span>
+                <span class="h7 mb-0 px-2 text-black pb-1">|</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- background-color: #d3eb3d;-->
+      <div class="container-fluid pt-2" style="width:100%;"> 
+        <div class="row">
+          <div class="col-sm-12 pb-2 fs-1" style="font-family: Cursive; font-weight: bolder;">
+            <span>Modify:</span>
+            <span style="color: red;">{{popup}}</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container-fluid pt-2" style="width:100%;"> 
+        <div class="row">
+          <div class="col-sm-10 pb-2 fs-3 px-5 pt-2" style="font-family: Cursive; font-weight: bolder;  background-color: #e5ff3d; border:3px solid #c1ff05;">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center justify-content-between"><span>{{cat}}</span></div>
+              <div class="d-flex justify-content-between" style="width: 27%;">
+                <button class="btn btn-info btn-lg rounded-3 fs-lg-4 ed-cat" id="Ed_cat" type="button" style="background-color: #62ff00; outline: #62ff00; border-color: #62ff00; font-family: Cursive;" onfocus="this.style.boxShadow = '0 0 0 5px rgba(98, 255, 0 0.150)'" onblur="this.style.boxShadow = '0 0 0 0 rgba(98, 255, 0 0.075)'" onmouseover="this.style.backgroundColor = '#00ff80'" onmouseout="this.style.backgroundColor = '#62ff00'" cat_Name="{{cat}}" cat_ID="{{category_ID}}">Edit</button>
+                <button class="btn btn-info btn-lg rounded-3 fs-lg-4 del-cat" id="Del_cat" type="button" style="background-color: #fc4903; outline: #fc4903; border-color: #fc4903; font-family: Cursive;" onfocus="this.style.boxShadow = '0 0 0 5px rgba(255, 0, 0, 0.150)'" onblur="this.style.boxShadow = '0 0 0 0 rgba(255, 0, 0, 0.075)'" onmouseover="this.style.backgroundColor = '#ff6b30'" onmouseout="this.style.backgroundColor = '#fc4903'" cat_Name="{{cat}}" cat_ID="{{category_ID}}">Delete category</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="prod-container">
+      {% for product in products%}
+        <div class="container-fluid pt-2" style="width:100%;"> 
+          <div class="row">
+            <div class="col-sm-10 pb-2 fs-4 px-5 pt-2" style="font-family: Cursive; font-weight: bold;  background-color: #d3eb3d; border:3px solid #e5ff3d;">
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center justify-content-between"><span>{{product[1]}}</span></div>
+                <div class="d-flex justify-content-between" style="width: 36%;">
+                  <button class="button-style1 add-feat rounded-circle px-3 pt-0" style="height:60px; width:60px" id="Add_feat" type="button" prod_Name="{{product[1]}}" prod_ID="{{product[0]}}"><i class="fa-solid fa-star add-feat" prod_Name="{{product[1]}}" prod_ID="{{product[0]}}"></i></button>
+                  <button class="btn btn-info btn-lg rounded-3 fs-lg-4 ed-prod" id="Ed_prod" type="button" style="background-color: #62ff00; outline: #62ff00; border-color: #62ff00; font-family: Cursive;" onfocus="this.style.boxShadow = '0 0 0 5px rgba(98, 255, 0 0.150)'" onblur="this.style.boxShadow = '0 0 0 0 rgba(98, 255, 0 0.075)'" onmouseover="this.style.backgroundColor = '#00ff80'" onmouseout="this.style.backgroundColor = '#62ff00'" prod_Name="{{product[1]}}" prod_ID="{{product[0]}}">Edit</button>
+                  <button class="btn btn-info btn-lg rounded-3 fs-lg-5 del-prod" id="Del_prod_{{product[1]}}" type="button" style="background-color: #fc4903; outline: #fc4903; border-color: #fc4903; font-family: Cursive;" onfocus="this.style.boxShadow = '0 0 0 5px rgba(255, 0, 0, 0.150)'" onblur="this.style.boxShadow = '0 0 0 0 rgba(255, 0, 0, 0.075)'" onmouseover="this.style.backgroundColor = '#ff6b30'" onmouseout="this.style.backgroundColor = '#fc4903'" prod_Name="{{product[1]}}" prod_ID="{{product[0]}}">Delete product</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+
+      <div class="container-fluid pt-4" style="width:100%;"> 
+        <!-- Category panels-->
+        <div class="row">
+          <div class="col-sm-12 pb-2">
+    
+            <div class="d-flex flex-wrap align-items-center justify-content-center " style="width:100%;">
+              <div class="d-flex col-lg-8 col-xs-10 flex-wrap align-items-center justify-content-start px-md-sm-xs-1 px-xs-0 mr-xs-0 ms-xl-4" style="background-color: #ebebeb;">
+                  
+
+              </div>              
+            </div> 
+
+          </div>
+        </div>
+      </div>
+      <div class="feature-tooltip" id="featured_tooltip">Press that button to add the product in the featured list!</div>
+      <script>
+        const button = document.getElementById('LogoutButton');
+        button.addEventListener('click', function() {
+            window.location.href = '/logout';
+        });
+
+        const storeM_button = document.getElementById('management');
+        storeM_button.addEventListener('click', function() {
+            window.location.href = '/user={{usr}}/management';
+        });
+
+        const edCat_button = document.getElementById('Ed_cat');
+        edCat_button.addEventListener('click', function() {
+            window.location.href = '/user={{usr}}/edit_Category={{cat}}';
+        });
+
+        const delCat_button = document.getElementById('Del_cat');
+        delCat_button.addEventListener('click', function() {
+            window.location.href = '/user={{usr}}/delete_Category={{category_ID}},{{cat}}';
+        });
+    </script>
+    <script>
+          var parentclass = document.getElementById('prod-container')
+          parentclass.addEventListener('click',function(event){
+
+            if (event.target.classList.contains('del-prod')){
+              var prod_ID =  event.target.getAttribute('prod_ID')
+              var prod_Name =  event.target.getAttribute('prod_Name')
+              window.location.href = '/user={{usr}}/delete_Product='+ prod_ID+','+prod_Name;
+            }
+            else if (event.target.classList.contains('ed-prod')){
+              var prod_ID =  event.target.getAttribute('prod_ID')
+              var prod_Name =  event.target.getAttribute('prod_Name')
+              window.location.href = '/user={{usr}}/edit_Product='+ prod_ID+','+prod_Name;
+            }
+            else if(event.target.classList.contains('add-feat')){
+              var prod_ID =  event.target.getAttribute('prod_ID')
+              var prod_Name =  event.target.getAttribute('prod_Name')
+              window.location.href = '/user={{usr}}/feat_Product='+ prod_ID+','+prod_Name;
+            }
+            });
+          const tooltip1 = document.getElementById('featured_tooltip');
+          let hoverTimeout;
+
+          parentclass.addEventListener('mouseover',function(event){
+            if (event.target.classList.contains('add-feat')){
+              hoverTimeout = setTimeout(() => { 
+                tooltip1.classList.remove('featured_tooltip');
+                tooltip1.classList.add('featured_tooltip.active');
+                }, 1000);
+            }
+          });
+
+          parentclass.addEventListener('mouseout',function(event){
+            clearTimeout(hoverTimeout);
+            tooltip1.classList.remove('featured_tooltip.active');
+            tooltip1.classList.add('featured_tooltip');
+          });
+
+      </script>
+  </body>
+</html>

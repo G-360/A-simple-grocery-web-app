@@ -1,0 +1,18 @@
+.bad-option {
+    background-color: #fc4903;
+    outline: #fc4903;
+    border-color: #fc4903;
+    font-family: Cursive;
+}
+
+.bad-option:focus {
+    box-shadow: 0 0 0 5px rgba(255, 0, 0, 0.150);
+}
+
+.bad-option:blur {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.075);
+}
+
+.bad-option:hover {
+    background-color: #ff6b30;
+}

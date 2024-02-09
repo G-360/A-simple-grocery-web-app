@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="G:/IITM proj/Grocery/new/Database/groceryDB.sqlite3" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="3191"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="6" parent="0"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,6:mainBought"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Bought" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="52"/><column index="2" value="64"/><column index="3" value="118"/><column index="4" value="146"/><column index="5" value="142"/><column index="6" value="186"/><column index="7" value="161"/><column index="8" value="128"/><column index="9" value="95"/><column index="10" value="62"/><column index="11" value="221"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Cart" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="52"/><column index="2" value="64"/><column index="3" value="118"/><column index="4" value="146"/><column index="5" value="152"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Categories" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="52"/><column index="2" value="156"/><column index="3" value="103"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Featured" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort><column index="1" mode="0"/></sort><column_widths><column index="1" value="52"/><column index="2" value="153"/><column index="3" value="316"/><column index="4" value="86"/><column index="5" value="67"/><column index="6" value="128"/><column index="7" value="95"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Products" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="52"/><column index="2" value="101"/><column index="3" value="64"/><column index="4" value="86"/><column index="5" value="67"/><column index="6" value="128"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="U_Attributes" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="83"/><column index="2" value="68"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="U_Register" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="67"/><column index="2" value="64"/><column index="3" value="88"/><column index="4" value="175"/><column index="5" value="52"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="sqlite_sequence" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="101"/><column index="2" value="52"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="update_prod_name.sql">
+CREATE TRIGGER Update_Product_Name
+AFTER UPDATE ON Products
+FOR EACH ROW
+BEGIN
+	UPDATE Featured
+	SET Product_Name = NEW.Product_Name
+	WHERE Featured.Product_ID = OLD.ID;
+	UPDATE Cart
+	SET Product_Name = NEW.Product_Name
+	WHERE Featured.Product_ID = OLD.ID;
+END;</sql><sql name="Edit Trigger Category_Product_Count_decrement">DROP TRIGGER &quot;main&quot;.&quot;Category_Product_Count_decrement&quot;;
+CREATE TRIGGER Category_Product_Count_decrement
+AFTER DELETE ON Products
+BEGIN
+	UPDATE Categories
+	SET No_Prods = No_Prods - 1
+	WHERE Categories.ID = OLD.Category_ID;
+END</sql><sql name="Edit Trigger Category_Product_Count_decrement">DROP TRIGGER &quot;main&quot;.&quot;Category_Product_Count_decrement&quot;;
+CREATE TRIGGER Category_Product_Count_decrement
+AFTER DELETE ON Products
+BEGIN
+	UPDATE Categories
+	SET No_Prods = No_Prods - 1
+	WHERE Categories.ID = OLD.Category_ID;
+END</sql><sql name="Edit Trigger Category_Product_Count">DROP TRIGGER &quot;main&quot;.&quot;Category_Product_Count&quot;;
+CREATE TRIGGER Category_Product_Count
+AFTER INSERT ON Products
+BEGIN
+	UPDATE Categories
+	SET No_Prods = No_Prods + 1
+	WHERE Categories.ID = NEW.Category_ID;
+END</sql><sql name="Edit Trigger Update_Product_Name">DROP TRIGGER &quot;main&quot;.&quot;Update_Product_Name&quot;;
+CREATE TRIGGER Update_Product_Name
+AFTER UPDATE ON Products
+FOR EACH ROW
+BEGIN
+	UPDATE Featured
+	SET Product_Name = NEW.Name
+	WHERE Featured.Product_ID = OLD.ID;
+	UPDATE Cart
+	SET Product_Name = NEW.Name
+	WHERE Cart.Product_ID = OLD.ID;
+END</sql><current_tab id="4"/></tab_sql></sqlb_project>
